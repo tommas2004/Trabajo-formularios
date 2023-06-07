@@ -1,0 +1,105 @@
+var formulario = document.createElement('form');
+
+formulario.setAttribute('id', 'miFormulario');
+
+formulario.setAttribute('method', 'POST');
+
+formulario.setAttribute('action', 'https://example.com/registro');
+
+function validarFormulario(event) {
+
+  event.preventDefault(); 
+
+  
+
+  var nombre = document.getElementsByName('nombre')[0].value;
+
+  var contraseña = document.getElementsByName('contraseña')[0].value;
+
+  var ciudad = document.getElementsByName('ciudad')[0].value;
+
+  
+
+  if (!nombre || !contraseña || !ciudad) {
+
+    
+
+    alert('El campo ' + (nombre ? (contraseña ? 'Ciudad' : 'Contraseña') : 'Nombre') + ' es inválido.');
+
+  } else {
+
+    
+
+    formulario.submit();
+
+  }
+
+}
+
+formulario.addEventListener('submit', validarFormulario);
+
+var labelNombre = document.createElement('label');
+
+labelNombre.textContent = 'Nombre:';
+
+var inputNombre = document.createElement('input');
+
+inputNombre.setAttribute('type', 'text');
+
+inputNombre.setAttribute('name', 'nombre');
+
+formulario.appendChild(labelNombre);
+
+formulario.appendChild(inputNombre);
+
+var labelContraseña = document.createElement('label');
+
+labelContraseña.textContent = 'Contraseña:';
+
+var inputContraseña = document.createElement('input');
+
+inputContraseña.setAttribute('type', 'password');
+
+inputContraseña.setAttribute('name', 'contraseña');
+
+formulario.appendChild(labelContraseña);
+
+formulario.appendChild(inputContraseña);
+
+var labelCiudad = document.createElement('label');
+
+labelCiudad.textContent = 'Ciudad:';
+
+var selectCiudad = document.createElement('select');
+
+selectCiudad.setAttribute('name', 'ciudad');
+
+var ciudadesDisponibles = ['Merloo', 'Padua', 'Ituzaingó', 'Castelar'];
+
+ciudadesDisponibles.forEach(function(ciudad) {
+
+  var optionCiudad = document.createElement('option');
+
+  optionCiudad.setAttribute('value', ciudad);
+
+  optionCiudad.textContent = ciudad;
+
+  selectCiudad.appendChild(optionCiudad);
+
+});
+
+formulario.appendChild(labelCiudad);
+
+formulario.appendChild(selectCiudad);
+
+var botonEnviar = document.createElement('button');
+
+botonEnviar.setAttribute('type', 'submit');
+
+botonEnviar.textContent = 'Enviar';
+
+formulario.appendChild(botonEnviar);
+
+console.log('formulario enviado');
+
+document.body.appendChild(formulario);
