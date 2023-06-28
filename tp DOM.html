@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selección de Tipo de Control</title>
+</head>
+<body>
+  <h1>Selección de Tipo de Control</h1>
+  <form>
+    <label for="nombreControl">Nombre del Control:</label>
+    <input type="text" id="nombreControl">
+    <br>
+    <label for="idControl">ID del Control:</label>
+    <input type="number" id="idControl">
+    <br>
+    <label for="etiquetaControl">Etiqueta (label - opcional):</label>
+    <input type="text" id="etiquetaControl">
+    <br>
+    <label for="tipoControl">Tipo de Control:</label>
+    <select id="tipoControl">
+      <option value="text">Text</option>
+      <option value="password">Password</option>
+      <option value="number">Number</option>
+      <option value="color">Color</option>
+      <option value="email">Email</option>
+    </select>
+    <br>
+    <button type="button" onclick="crearControl()">Crear Control</button>
+  </form>
+  
+  <div id="contenedor-control"></div>
+
+  <script>
+    function crearControl() {
+      var tipoControl = document.getElementById('tipoControl').value;
+      var nombreControl = document.getElementById('nombreControl').value;
+      var idControl = document.getElementById('idControl').value;
+      var etiquetaControl = document.getElementById('etiquetaControl').value;
+
+      // Crear el label
+      var label = document.createElement('label');
+      label.innerHTML = etiquetaControl !== '' ? etiquetaControl + ': ' : '';
+      label.setAttribute('for', idControl);
+
+      // Crear el control
+      var control = document.createElement('input');
+      control.setAttribute('type', tipoControl);
+      control.setAttribute('id', idControl);
+      control.setAttribute('name', nombreControl);
+
+      // Obtener el contenedor de controles
+      var contenedorControles = document.getElementById('contenedor-control');
+
+      // Añadir el label y el control al contenedor
+      contenedorControles.appendChild(label);
+      contenedorControles.appendChild(control);
+    }
+  </script>
+</body>
+</html>
