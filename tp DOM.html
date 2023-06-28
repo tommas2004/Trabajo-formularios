@@ -36,21 +36,18 @@
       var idControl = document.getElementById('idControl').value;
       var etiquetaControl = document.getElementById('etiquetaControl').value;
 
-      // Crear el label
+      // Profe tengo sueño.
       var label = document.createElement('label');
       label.innerHTML = etiquetaControl !== '' ? etiquetaControl + ': ' : '';
       label.setAttribute('for', idControl);
 
-      // Crear el control
       var control = document.createElement('input');
       control.setAttribute('type', tipoControl);
       control.setAttribute('id', idControl);
       control.setAttribute('name', nombreControl);
 
-      // Obtener el contenedor de controles
       var contenedorControles = document.getElementById('contenedor-control');
 
-      // Añadir el label y el control al contenedor
       contenedorControles.appendChild(label);
       contenedorControles.appendChild(control);
     }
